@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fußball-Quiz</title>
+    <style>
+        /* Allgemeine Stile */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0px;
+            padding: 0px;
+            display: flex;
+            justify-content: center;/*zentieren der elemente*/
+            align-items: center;/*zentrieren der elemente*/
+            height: 100vh; /* Volle Höhe des Viewports */
+            background-image: url('https://www.tortenbild-druckerei.de/media/image/dd/c9/cc/Fussballfeld-Tortenaufleger-Fussball-Tortenbild.jpg'); /* Pfad zur Bilddatei */
+            font-weight: bold;/*Schrift fett*/
+            background-size: cover;/*Hintergrundbild auf bildschirm angepasst*/
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        /* Stil für die Top 3 Liste */
+        #top3-liste {
+            position: fixed;
+            top: 20px; /* Abstand vom oberen Rand */
+            left: 110px; /* Abstand vom linken Rand */
+            background-color: rgba(255, 255, 255, 0.8); /* Leicht transparentes Weiß */
+            padding: 10px;/*größe des feldes*/
+            border: 3px solid #050404;
+            border-radius: 5px;
+        }
+        #top3-liste h2 {
+            margin-top: 10px;
+            color: #060404; /* Dunkler Text */
+        }
+        #top3-liste ol {
+            margin: 0px;
+            padding: 0px;
+            list-style-type: none;/*1,2,3 vorne fällt weg*/
+        }
+        #top3-liste ol li {
+            margin-bottom: 5px;/*abstand der plätze*/
+            font-size:25px;
+            color: #0b0808; /* Mittlerer Text */
+        }
+        /* Farben für die Platzierungen */
+        #top3-liste ol li span {
+            font-weight: bold; /* Fett für die Zahlen */
+        }
+        #top3-liste ol li:nth-child(1) span {
+            color: #f8d71c; /* Gold für Platz 1 */
+        }
+        #top3-liste ol li:nth-child(2) span {
+            color: silver; /* Silber für Platz 2 */
+        }
+        #top3-liste ol li:nth-child(3) span {
+            color: #cd7f32; /* Bronze für Platz 3 */
+        }
+
+        /* Stil für das Punktzahl-Feld */
+        #punktzahl-feld {
+            position: fixed;
+            top: 50px; /* Abstand vom oberen Rand */
+            right: 100px; /* Abstand vom rechten Rand */
+            background-color: rgba(255, 255, 255, 0.8); /* Leicht transparentes Weiß */
+            padding: 20px;
+            border: 3px solid #060404;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        #punktzahl-feld p {
+            margin: 0;
+            font-size: 25px;
+            color: #333; /* Dunkler Text */
+        }
+        #punktzahl {
+            color: #070706; /* Gold */
+        }
+
+        /* Stil für das Quiz-Feld */
+        #quiz-feld {
+            width: 50%; /* Breite des Feldes */
+            background-color: rgba(255, 255, 255, 0.8); /* Leicht transparentes Weiß */
+            padding: 20px;
+            border: 4px solid #130e0e; /* Dunkles Braun für den Fußball */
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #frage {
+            margin-bottom: 20px; /*Abstand von frage zu antworten*/
+            width: 97%; /*Breite des Feldes der Frage*/
+            border: 3px solid #080707;
+            border-radius: 10px;
+            padding: 20px; /*Abstand frage zur border*/
+            background-color: #f9f4f4; /* Weiß für den Hintergrund der Frage */
+            text-align: center; /* Zentriert den Text */
+        }
+        #frage p {
+            margin: 0; /*Feld der frage nach oben*/
+            font-size: 25px;/*Größe der Frage*/
+            color: #333; /* Dunkler Text */
+        }
+        .antworten {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 10px;
+            width: 100%;
+        }
+        .antwort {
+            border: 3px solid #070505; /* Flacherer Rahmen */
+            border-radius: 10px; /* Etwas breiterer Radius */
+            padding: 15px; /* Kleinere Polsterung */
+            background-color: #fff; /* Weiß für den Hintergrund der Antwort */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .antwort p {
+            margin: 0;
+            font-size: 16px;
+            color: #333; /* Dunkler Text */
+        }
+        .antwort input[type="text"] {
+            width: calc(100% - 10px); /* Berechne die Breite abzüglich des Rahmens */
+            box-sizing: border-box;
+            border: none;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        /* Stil für Fußball-Bild */
+        #fußball-logo {
+            position: fixed;
+            bottom: 50px;
+            right: 130px;
+            width: 80px;
+            height: 80px;
+            background-image: url('https://cdn.pixabay.com/photo/2013/07/13/10/51/football-157930_1280.png'); /* Bild eines Fußballs */
+            background-size: cover;
+            border-radius: 50%; /* Kreisrunde Form */
+            border: 4px solid #080707; /* Rand für den Fußball */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+<div id="top3-liste">
+    <h2 style="font-size: 25px;">Top 3</h2> <!-- Größere Schrift für "Top 3:" -->
+    <ol>
+        <li>Platz 1: <span style="color: #ffd700;">35</span></li>
+        <li>Platz 2: <span style="color: silver;">28</span></li>
+        <li>Platz 3: <span style="color: #cd7f32;">25</span></li>
+    </ol>
+</div>
+
+<div id="punktzahl-feld">
+    <p>Deine Punktzahl: <span id="punktzahl">10</span></p>
+</div>
+
+<div id="quiz-feld">
+    <div id="frage">
+        <p>Wer ist der GOAT?</p>
+    </div>
+    <div class="antworten">
+        <div class="antwort">
+            <p>Cristiano Ronaldo</p>
+        </div>
+        <div class="antwort">
+            <p>Rashford</p>
+        </div>
+        <div class="antwort">
+            <p>Sadio Mané</p>
+        </div>
+        <div class="antwort">
+            <p>Lionel Messi</p>
+        </div>
+    </div>
+</div>
+
+<!-- Fußball-Bild -->
+<div id="fußball-logo"></div>
+
+</body>
+</html>
