@@ -27,11 +27,12 @@
             top: 20px; /* Abstand vom oberen Rand */
             left: 110px; /* Abstand vom linken Rand */
             background-color: rgba(255, 255, 255, 0.8); /* Leicht transparentes Weiß */
-            padding: 10px;/*größe des feldes*/
+            padding: 15px;/*größe des feldes*/
             border: 3px solid #050404;
             border-radius: 5px;
         }
         #top3-liste h2 {
+            font-size: 35px !important;
             margin-top: 10px;
             color: #060404; /* Dunkler Text */
         }
@@ -42,21 +43,22 @@
         }
         #top3-liste ol li {
             margin-bottom: 5px;/*abstand der plätze*/
-            font-size:25px;
+            font-size:30px;
             color: #0b0808; /* Mittlerer Text */
         }
         /* Farben für die Platzierungen */
         #top3-liste ol li span {
             font-weight: bold; /* Fett für die Zahlen */
+            padding:10px;
         }
         #top3-liste ol li:nth-child(1) span {
             color: #f8d71c; /* Gold für Platz 1 */
         }
         #top3-liste ol li:nth-child(2) span {
-            color: silver; /* Silber für Platz 2 */
+            color: silver; /*Silber Platz 2*/
         }
         #top3-liste ol li:nth-child(3) span {
-            color: #cd7f32; /* Bronze für Platz 3 */
+            color: #cd7f32; /* Bronze Platz 3 */
         }
 
         /* Stil für das Punktzahl-Feld */
@@ -68,15 +70,14 @@
             padding: 20px;
             border: 3px solid #060404;
             border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
         #punktzahl-feld p {
-            margin: 0;
-            font-size: 25px;
+            margin: 20px;
+            font-size: 30px;
             color: #333; /* Dunkler Text */
         }
         #punktzahl {
-            color: #070706; /* Gold */
+            color: #070706; 
         }
 
         /* Stil für das Quiz-Feld */
@@ -101,31 +102,28 @@
         }
         #frage p {
             margin: 0; /*Feld der frage nach oben*/
-            font-size: 25px;/*Größe der Frage*/
+            font-size: 35px;/*Größe der Frage*/
             color: #333; /* Dunkler Text */
         }
         .antworten {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            grid-gap: 10px;
-            width: 100%;
+            grid-gap: 30px;
+            width: 100%;/*ganze breite der fragen*/
         }
         .antwort {
             border: 3px solid #070505; /* Flacherer Rahmen */
             border-radius: 10px; /* Etwas breiterer Radius */
-            padding: 15px; /* Kleinere Polsterung */
             background-color: #fff; /* Weiß für den Hintergrund der Antwort */
             display: flex;
             align-items: center;
             justify-content: center;
         }
         .antwort p {
-            margin: 0;
-            font-size: 16px;
+            font-size: 20px;/*Größe text*/
             color: #333; /* Dunkler Text */
         }
         .antwort input[type="text"] {
-            width: calc(100% - 10px); /* Berechne die Breite abzüglich des Rahmens */
             box-sizing: border-box;
             border: none;
             text-align: center;
@@ -139,18 +137,17 @@
             right: 130px;
             width: 80px;
             height: 80px;
-            background-image: url('https://cdn.pixabay.com/photo/2013/07/13/10/51/football-157930_1280.png'); /* Bild eines Fußballs */
+            background-image: url('https://cdn.pixabay.com/photo/2013/07/13/10/51/football-157930_1280.png'); 
             background-size: cover;
             border-radius: 50%; /* Kreisrunde Form */
-            border: 4px solid #080707; /* Rand für den Fußball */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            border: 4px solid #080707;
         }
     </style>
 </head>
 <body>
 
 <div id="top3-liste">
-    <h2 style="font-size: 25px;">Top 3</h2> <!-- Größere Schrift für "Top 3:" -->
+    <h2 style="font-size: 25px;">Top 3</h2> 
     <ol>
         <li>Platz 1: <span style="color: #ffd700;">35</span></li>
         <li>Platz 2: <span style="color: silver;">28</span></li>
