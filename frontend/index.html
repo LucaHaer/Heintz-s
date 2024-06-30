@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fußball-Quiz</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+
+<div id="top3-liste">
+    <h2>Top 3</h2>
+    <ol>
+        <li id="platz1">Platz 1: Max - 5 Punkte</li>
+        <li id="platz2">Platz 2: Paul - 3 Punkte</li>
+        <li id="platz3">Platz 3: Anna - 2 Punkte</li>
+    </ol>
+</div>
+
+<div id="name-eingeben">
+    <input type="text" id="spielername" placeholder="Spielername">
+    <button id="start-button">Start</button>
+    
+</div>
+<div id="punktzahl-feld">
+    <p>Deine Punktzahl: <span id="punktzahl">0</span></p>
+</div>
+<button id="quiz-neustarten" onclick="resetQuizManuell()">Quiz neu starten</button>
+<div id="quiz-feld" style="display: none;"> <!-- Ausgeblendet beim Start -->
+    <div id="frage">
+        <p></p>
+    </div>
+    <div class="antworten">
+        <div class="antwort">
+            <p></p>
+        </div>
+        <div class="antwort">
+            <p></p>
+        </div>
+        <div class="antwort">
+            <p></p>
+        </div>
+        <div class="antwort">
+            <p></p>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
